@@ -2,11 +2,9 @@
    "scripts": {
       "dev": "clear && nodemon ./src/index.ts",
       "start": "tsc && node ./build/index.js",
-      "migrations": "tsnd ./src/migrations/createPokemonTable.ts"
+      "migrations": "tsnd ./src/migrations/createOlympicTable.ts"
    },
    "dependencies": {
-      "bcryptjs": "^2.4.3",
-      "jsonwebtoken": "^8.5.1",
       "uuid": "^8.3.2",
       "cors": "^2.8.5",
       "dotenv": "^8.2.0",
@@ -17,8 +15,6 @@
    },
    "devDependencies": {
       "nodemon": "^2.0.15",
-      "@types/bcryptjs": "^2.4.2",
-      "@types/jsonwebtoken": "^8.5.5",
       "@types/uuid": "^8.3.1",
       "@types/cors": "^2.8.12",
       "@types/express": "^4.17.7",
