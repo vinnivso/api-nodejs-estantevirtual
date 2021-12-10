@@ -5,11 +5,12 @@ async function createOlympicTable():Promise<boolean> {
     await BaseDatabase.connection.raw(`
       CREATE TABLE IF NOT EXISTS estantevirtual_challenge_olympicgames (
         id VARCHAR(255) NOT NULL,
-        competicao VARCHAR(255) NOT NULL,
-        atleta VARCHAR(255) NOT NULL,
-        value INT NOT NULL,
-        unidade VARCHAR(255) NOT NULL
-      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+        competition VARCHAR(255) NOT NULL,
+        athletes VARCHAR(255) [][],
+        unity VARCHAR(255) NOT NULL,
+        created_at TIMESTAMP,
+        finished_at TIMESTAMP
+      );
     `)
     console.log(`Tabela criada com sucesso`)
     return true
@@ -18,6 +19,8 @@ async function createOlympicTable():Promise<boolean> {
     return false
   }
 }
+
+
 
 createOlympicTable()
   .finally(() => BaseDatabase.connection.destroy())
