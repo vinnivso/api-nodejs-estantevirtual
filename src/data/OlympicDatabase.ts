@@ -4,7 +4,7 @@ import BaseDatabase from "./BaseDatabase"
 export class OlympicDatabase extends BaseDatabase {
   private static tableName = "estantevirtual_challenge_olympicgames"
 
-  async createCompetition(competition:string, unity:string, value:number, athlete?:string):Promise<void> {
+  async createCompetition(competition:string, unity:string, value:number, athlete:string):Promise<void> {
     try {
       await BaseDatabase.connection.raw(`
       INSERT INTO estantevirtual_challenge_olympicgames (competition, unity, value, athlete)
