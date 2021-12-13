@@ -3,15 +3,14 @@ import BaseDatabase from "../data/BaseDatabase"
 async function createOlympicTable():Promise<boolean> {
   try {
     await BaseDatabase.connection.raw(`
-      CREATE TABLE IF NOT EXISTS estantevirtual_challenge_olympicgames (
-        id VARCHAR(255) NOT NULL,
+    CREATE TABLE IF NOT EXISTS estantevirtual_challenge_olympicgames (
+      id VARCHAR(255) PRIMARY KEY,
         competition VARCHAR(255) NOT NULL,
-        athletes VARCHAR(255) [][],
-        unity VARCHAR(255) NOT NULL,
-        created_at TIMESTAMP,
-        finished_at TIMESTAMP
-      );
-    `)
+        athlete VARCHAR(255) NOT NULL,
+        value INT NOT NULL,
+        unity VARCHAR(255) NOT NULL
+    );
+  `)
     console.log(`Tabela criada com sucesso`)
     return true
   } catch (error:any) {
@@ -19,8 +18,5 @@ async function createOlympicTable():Promise<boolean> {
     return false
   }
 }
-
-
-
 createOlympicTable()
   .finally(() => BaseDatabase.connection.destroy())
