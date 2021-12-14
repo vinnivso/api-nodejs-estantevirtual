@@ -25,10 +25,10 @@ export class EndpointCreateCompetition {
       } else if(filterByCompetitionAndAthlete) {
         response.status(409).json({message:`Atleta já cadastrado na competição`})
       } else {
-        await new OlympicDatabase().createCompetition(id, competition, unity,value,athlete,status)
+        await new OlympicDatabase().createCompetition(id, competition, athlete, value, unity, status)
         response.status(201).json({message:`Competition created`})
       }
-      
+
     } catch (error:any) {
       response.status(500).json({message: error.message})
     }
