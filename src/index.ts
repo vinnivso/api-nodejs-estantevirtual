@@ -1,4 +1,4 @@
 import { app } from "./app"
-// import { EndpointGetPokemon } from "./endpoints/EndpointGetPokemon"
+import { EndpointCreateCompetition } from "./endpoints/EndpointCreateCompetition"
 
-// app.get("/pokemons", new EndpointGetPokemon().getPokemons)
+app.post("/competition", new EndpointCreateCompetition().createCompetition)

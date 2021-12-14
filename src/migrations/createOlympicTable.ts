@@ -7,8 +7,9 @@ async function createOlympicTable():Promise<boolean> {
       id VARCHAR(255) PRIMARY KEY,
         competition VARCHAR(255) NOT NULL,
         athlete VARCHAR(255) NOT NULL,
-        value INT NOT NULL,
-        unity VARCHAR(255) NOT NULL
+        value FLOAT(5) NOT NULL,
+        unity VARCHAR(255) NOT NULL,
+        status ENUM("DONE", "UNDONE") DEFAULT "UNDONE"
     );
   `)
     console.log(`Tabela criada com sucesso`)

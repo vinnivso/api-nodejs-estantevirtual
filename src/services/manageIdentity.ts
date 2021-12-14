@@ -1,5 +1,7 @@
-import uuid from "uuid"
+import * as uuid from "uuid"
 
 export default class ManageIdentity {
-  generateId():string {return uuid.v4()}
+  generateId():string {
+    return uuid.v4()
+  }
 }
