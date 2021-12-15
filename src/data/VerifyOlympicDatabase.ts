@@ -3,7 +3,13 @@ import { OlympicDatabase } from "./OlympicDatabase";
 
 
 export class VerifyOlympicDatabase extends OlympicDatabase {
-  async verifyCompetitionAndAthlete(competition:string | object, athlete:string | object) {
+  async verifyCompetition(competition:string | object) {
+    const result = await BaseDatabase.connection(OlympicDatabase.tableName)
+      .where("competition", "LIKE", `%${competition}%`)
+    return result
+  }
+
+  async verifyCompetitionAndAthlete(competition:string | object, athlete?:string | object) {
       const result = await BaseDatabase.connection(OlympicDatabase.tableName)
         .where({competition, athlete})
       return result

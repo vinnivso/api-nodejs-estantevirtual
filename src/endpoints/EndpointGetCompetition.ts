@@ -1,14 +1,19 @@
 import express from "express"
 import { OlympicDatabase } from "../data/OlympicDatabase"
+import { VerifyOlympicDatabase } from "../data/VerifyOlympicDatabase"
 
 export class EndpointGetCompetition {
   async getCompetitions(request: express.Request, response:express.Response):Promise<void> {
     try {
       const {competition} = request.query
 
+      const [filterByCompetition] = await new VerifyOlympicDatabase().verifyCompetition(competition as string)
+
       let result
 
-      if(competition) {
+      if(!filterByCompetition && competition !== undefined) {
+        response.status(409).json({message:`COMPETITION não encontrada`})
+      } else if(competition) {
         result = await new OlympicDatabase().getCompetition(competition)
       } else {
         result = await new OlympicDatabase().getAllCompetitions()
