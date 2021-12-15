@@ -13,4 +13,20 @@ export class OlympicDatabase extends BaseDatabase {
     }
   }
 
+  async getCompetition(competition:string | object) {
+    const result = await BaseDatabase.connection(OlympicDatabase.tableName)
+      .where("competition", "LIKE", `%${competition}%`)
+      .orderBy("value", "DESC")
+    return result
+  }
+
+  async getAllCompetitions():Promise<object[] | boolean> {
+    try {
+      const result = await BaseDatabase.connection(OlympicDatabase.tableName)
+      return result
+    } catch (error) {
+      console.log(error)
+      return false
+    }
+  }
 }
